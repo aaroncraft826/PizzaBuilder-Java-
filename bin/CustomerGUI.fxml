@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.OrderController">
+   <left>
+      <FlowPane alignment="TOP_CENTER" hgap="20.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="225.0" style="-fx-background-insets: 10;" vgap="20.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="10.0" top="20.0" />
+         </BorderPane.margin>
+         <children>
+            <GridPane prefHeight="89.0" prefWidth="200.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Pizza Type" />
+                  <Label prefHeight="17.0" prefWidth="58.0" text="Size" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="pizzaType" onAction="#typeSelected" prefWidth="150.0" GridPane.columnIndex="1" />
+                  <ComboBox fx:id="pizzaSize" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <GridPane hgap="10.0" prefHeight="271.0" prefWidth="200.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="131.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="244.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <ListView fx:id="toppingsList" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Toppings" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selected" GridPane.columnIndex="1" />
+                  <ListView fx:id="selectedToppingsList" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <VBox alignment="CENTER" prefHeight="113.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Button fx:id="addButton" alignment="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="141.0" text="Add Toppings &gt;&gt;" />
+                  <Button fx:id="removeButton" alignment="CENTER" mnemonicParsing="false" onAction="#remove" prefHeight="25.0" prefWidth="141.0" text="Remove Toppings &lt;&lt;" />
+                  <Button fx:id="clearButton" alignment="CENTER" mnemonicParsing="false" onAction="#clear" prefHeight="25.0" prefWidth="141.0" text="Clear Toppings" />
+               </children>
+            </VBox>
+         </children>
+      </FlowPane>
+   </left>
+   <top>
+      <GridPane alignment="CENTER" prefHeight="83.0" prefWidth="548.0" style="-fx-border-width: 10; -fx-border-color: black;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="263.0" minWidth="10.0" prefWidth="259.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="106.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="A&amp;M's Pizza" textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Baskerville Old Face" size="48.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+   </top>
+   <right>
+      <VBox prefHeight="437.0" prefWidth="274.0" spacing="20.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin>
+         <children>
+            <ImageView fx:id="pizzaImage" fitHeight="150.0" fitWidth="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@PizzaImages/pizza.jpg" />
+               </image>
+            </ImageView>
+            <TextArea fx:id="outputDisplay" editable="false" prefHeight="212.0" prefWidth="274.0" />
+            <VBox alignment="CENTER" prefHeight="95.0" prefWidth="273.0" spacing="20.0">
+               <children>
+                  <Button fx:id="addOrderButton" mnemonicParsing="false" onAction="#addToOrder" prefHeight="25.0" prefWidth="141.0" text="Add to Order" />
+                  <Button fx:id="showOrderButton" mnemonicParsing="false" onAction="#showOrder" prefHeight="25.0" prefWidth="140.0" text="Show Order" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
